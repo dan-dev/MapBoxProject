@@ -3,6 +3,7 @@ package com.example.danny.mapboxproject;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +27,17 @@ public class QuestionListActivity extends AppCompatActivity {
 
         final Button mapBTN = (Button) findViewById(R.id.mapBTN);
 
+        final FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         mapBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,14 +46,22 @@ public class QuestionListActivity extends AppCompatActivity {
             }
         });
 
+        mapBTN.setVisibility(View.INVISIBLE);
+
         questionListView = (ListView) findViewById(R.id.questionListView);
 
         final Question question = new Question();
 
         final List<Question> questionList = question.getQuestionList();
-        final List<String> list = new ArrayList<>();
+        final ArrayList<Question> list = new ArrayList<>();
 
         for (Question q : questionList){
+            list.add(q);
+        }
+
+        ItemAdapter adapter = new ItemAdapter(context, list);
+
+        /*for (Question q : questionList){
             String s = "";
             if(q.getAnswered()==true) {
                 s += "(Answered) ";
@@ -54,11 +74,12 @@ public class QuestionListActivity extends AppCompatActivity {
             }
             s += q.getQuestion();
             list.add(s);
-        }
+        }*/
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+        //final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+        //questionListView.setAdapter(arrayAdapter);
 
-        questionListView.setAdapter(arrayAdapter);
+        questionListView.setAdapter(adapter);
         questionListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

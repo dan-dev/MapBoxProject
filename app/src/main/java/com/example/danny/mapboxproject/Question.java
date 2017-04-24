@@ -67,11 +67,11 @@ public class Question {
     public List<Question> getQuestionList(){
         List<Question> list = new ArrayList<>();
 
-        list.add(new Question("aa02", false, true, "Question 1", "yes"));
-        list.add(new Question("ab03", false, false, "Question 2", "maybe"));
-        list.add(new Question("ac01", false, false, "Question 3", "m8"));
-        list.add(new Question("ad06", true, false, "Question 4", "no"));
-        list.add(new Question("ae04", true, false, "Question 5", "no"));
+        list.add(new Question("aa02", false, true, "What is the name of..", "yes"));
+        list.add(new Question("ab03", false, false, "I have 3 red parts..", "maybe"));
+        list.add(new Question("ac01", false, false, "If i have a mark on..", "m8"));
+        list.add(new Question("ad06", true, false, "Does a building with a..", "no"));
+        list.add(new Question("ae04", true, false, "I do have 1 spot, but do i..", "no"));
 
         return list;
     }
