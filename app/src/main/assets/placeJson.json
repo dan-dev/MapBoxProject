@@ -1,0 +1,640 @@
+{
+  "type":[
+    {
+      "id":0,
+      "name":"Statue"
+    },
+    {
+      "id":1,
+      "name":"Museum"
+    },
+    {
+      "id":2,
+      "name":"Church"
+    }
+  ],
+  "places":[
+    {
+      "id":0,
+      "name":"Igreja dos Grilos",
+      "lat":41.1421857,
+      "lng":-8.6126767,
+      "schedule":"08:00 - 21:00",
+      "resume":"Igreja edificada no século XVI em estilo maneirista. Pertencia ao Colégio da Companhia de Jesus e o frontal ostenta o seu emblema.",
+      "description":"Igreja edificada no século XVI em estilo maneirista. Pertencia ao Colégio da Companhia de Jesus e o frontal ostenta o seu emblema. Depois da expulsão dos Jesuítas foi vendido aos Agostinhos Descalços, conhecido por Frades Grilos, que aqui permaneceram até 1832. No interior destacam-se o retábulo de Nª Srª da Purificação, em talha dourada, e um belo painel em estilo neoclássico.",
+      "contact":"22 339 5020",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_dos_grilos_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_dos_grilos_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_dos_grilos_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":1,
+      "name":"Igreja da Trindade",
+      "lat":41.1508285,
+      "lng":-8.6104906,
+      "schedule":"09:00 - 18:00",
+      "resume":"A Igreja foi construída no antigo Largo do Laranjal, ao longo do séc. XIX, por iniciativa da Ordem da Trindade.",
+      "description":"A Igreja foi construída no antigo Largo do Laranjal, ao longo do séc. XIX, por iniciativa da Ordem da Trindade. O projecto, em estilo neoclássico, pertenceu ao arquitecto Carlos Amarante. A obra sofreu diversas alterações durante a construção, embora mantendo a orientação inicial. No interior da Igreja destaca-se um painel de grandes dimensões do pintor José de Brito.",
+      "contact":"22 207 5989",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_da_trindade_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_da_trindade_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_da_trindade_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":2,
+      "name":"Capela dos Alfaiates",
+      "lat":41.1432422,
+      "lng":-8.60746,
+      "schedule":"14:00 - 19:00",
+      "resume":"O edifício primitivo foi construído em meados do séc. XVI, em frente à porta principal da Sé.",
+      "description":"O edifício primitivo foi construído em meados do séc. XVI, em frente à porta principal da Sé. Pertencia à Irmandade dos Alfaiates, que celebravam a padroeira a 15 de Agosto. Cerca de 1940, a capela foi apeada para alargamento do Terreiro da Sé, sendo reconstruída alguns anos mais tarde, no sítio actual. No interior, o retábulo de Nossa Senhora de Agosto é um delicado exemplar de talha dourada do séc. XVII, em estilo maneirista.",
+      "contact":"22 214 9856",
+      "type":2,
+      "images":[
+        {
+          "ref":"capela_dos_alfaiates_1",
+          "number":0
+        },
+        {
+          "ref":"capela_dos_alfaiates_2",
+          "number":1
+        },
+        {
+          "ref":"capela_dos_alfaiates_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":3,
+      "name":"Igreja do Carmo",
+      "lat":41.1473441,
+      "lng":-8.6163433,
+      "schedule":"09:30 - 16:30",
+      "resume":"A Igreja da Ordem Terceira do Carmo foi construída na segunda metade do séc. XVIII, segundo projecto de José Figueiredo Seixas.",
+      "description":"A Igreja da Ordem Terceira do Carmo foi construída na segunda metade do séc. XVIII, ao gosto rocócó, segundo projecto de José Figueiredo Seixas. Em 1912, a fachada lateral foi recoberta com um grandioso painel de azulejo, com desenho de Silvestre Silvestri, que representa a imposição do escapulário no Monte Carmelo. No interior, destaca-se o retábulo-mor em talha dourada.",
+      "contact":"22 361 7842",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_do_carmo_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_do_carmo_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_do_carmo_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":4,
+      "name":"Igreja dos Congregados",
+      "lat":41.1461878,
+      "lng":-8.6107389,
+      "schedule":"08:00 - 20:00",
+      "resume":"A Igreja foi construída no fim do sé. XVII, no local onde existia uma capela dedicada a Santo António.",
+      "description":"A Igreja foi construída no fim do sé. XVII, no local onde existia uma capela dedicada a Santo António. Estava anexa ao Convento da Congregação do Oratório, demolido para abertura da Rua de Sá da Bandeira. A fachada, embora sóbria, revela alguma influência do barroco. Já no séc. XX, foi decorada com azulejos, da autoria de Jorge Colaço. No interior, os púlpitos e retábulos laterais em talha dourada são obras do séc. XVIII.",
+      "contact":"22 200 2948",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_dos_congregados_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_dos_congregados_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_dos_congregados_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":5,
+      "name":"Igreja dos Carmelitas",
+      "lat":41.1473196,
+      "lng":-8.6164859,
+      "schedule":"09:00 - 18:00",
+      "resume":"O convento dos frades Carmelitas Descalços e a sua Igreja foram edificados na primeira metade do séc. XVII.",
+      "description":"O convento dos frades Carmelitas Descalços e a sua Igreja foram edificados na primeira metade do séc. XVII. A Igreja Combina a sobriedade do estilo clássico com a influência do barroco. O interior foi enriquecido no séc. XVIII com retábulos e púlpitos em talha dourada. No séc. XIX, depois da extinção das ordens religiosas, a parte conventual passou a ser utilizada como quartel.",
+      "contact":"22 251 4266",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_dos_carmelitas_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_dos_carmelitas_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_dos_carmelitas_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":6,
+      "name":"Igreja de Santa Clara",
+      "lat":41.1425209,
+      "lng":-8.6092211,
+      "schedule":"11:00 - 19:00",
+      "resume":"A construção da Igreja e Convento feminino de Santa Clara data da primeira metade do século XV.",
+      "description":"A construção da Igreja e Convento feminino de Santa Clara data da primeira metade do século XV. Na época moderna sofreu alterações, sendo construído o portal renascentista. Já no século XVIII, a fachada foi novamente alterada. O seu interior foi revestido a talha dourada na mesma época, e é considerado um dos melhores trabalhos dos entalhadores da escola portuense.",
+      "contact":"22 213 9514",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_de_santa_clara_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_de_santa_clara_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_de_santa_clara_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":7,
+      "name":"Sé Catedral do Porto",
+      "lat":41.142826,
+      "lng":-8.6111836,
+      "schedule":"09:00 - 18:00",
+      "resume":"Edifício construído no século XII, em estilo românico. A Sé recebeu importantes beneficiações no período gótico e no século XVIII.",
+      "description":"Edifício construído no século XII, em estilo românico. Na torre do lado Norte um baixo relevo representando uma embarcação do século XIV simboliza a vocação marítima da cidade. A Sé recebeu importantes beneficiações no período gótico e no século XVIII. No interior destacam-se a sacristia, o claustro, a capela de João Gordo ( com um notável túmulo gótico ) a Sala do Capítulo e a exposição de Arte Sacra. As pinturas de Nicolau Nasoni, o retábulo-mor em talha dourada e o altar em prata do Santíssimo Sacramento são do período barroco.",
+      "contact":"22 205 9028",
+      "type":2,
+      "images":[
+        {
+          "ref":"se_catedral_do_porto_1",
+          "number":0
+        },
+        {
+          "ref":"se_catedral_do_porto_2",
+          "number":1
+        },
+        {
+          "ref":"se_catedral_do_porto_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":8,
+      "name":"Igreja de Santo Ildefonso",
+      "lat":41.1461779,
+      "lng":-8.6066391,
+      "schedule":"09:30 - 16:30",
+      "resume":"O edifício foi construído na primeira metade do séc. XVIII, no local onde existia uma ermida medieval.",
+      "description":"O edifício foi construído na primeira metade do séc. XVIII, no local onde existia uma ermida medieval. A escadaria que dá acesso ao templo foi aumentada posteriormente, erguendo-se então um obelisco que harmonizava o conjunto com a fronteira Igreja dos Clérigos. Os azulejos que revestem as paredes exteriores ilustram cenas da vida de Santo Ildefonso e alegorias da Eucaristia. São da autoria de Jorge Colaço e datam de 1932.",
+      "contact":"22 200 4366",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_de_santo_ildefonso_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_de_santo_ildefonso_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_de_santo_ildefonso_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":9,
+      "name":"Igreja da Misericórdia",
+      "lat":41.1435264,
+      "lng":-8.6146217,
+      "schedule":"10:00 - 19:00",
+      "resume":"A igreja foi edificada na segunda metade do século XVI, mas sofreu grandes alterações em meados do século XVIII.",
+      "description":"A igreja foi edificada na segunda metade do século XVI, mas sofreu grandes alterações em meados do século XVIII. A frontaria foi então reconstruída segundo desenho de Nicolau Nasoni. Profusamente decorada, denota já a influência do rocócó. No interior, salienta-se a capela-mor, ainda do primitivo edifício quinhentista. Pode também apreciar-se, na sacristia, o revestimento a azulejo do século XVII.",
+      "contact":"22 207 4710",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_da_misericordia_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_da_misericordia_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_da_misericordia_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":10,
+      "name":"Igreja de S. Francisco",
+      "lat":41.140950,
+      "lng":-8.615674,
+      "schedule":"09:00 - 18:00",
+      "resume":"A construção da igreja do convento de S. Francisco teve início no século XIV. Tem a estrutura de um templo gótico.",
+      "description":"A construção da igreja do convento de S. Francisco teve início no século XIV. Tem a estrutura de um templo gótico, com reminiscências do estilo românico. Da frontaria podemos salientar a rosácea e o portal, este edificado já nos séculos XVII-XVIII em estilo barroco. O interior é revestido a talha dourada da mesma época . De realçar o retábulo do altar da capela de Nossa Senhora da Conceição, representando a Árvore de Jessé esculpida em madeira polícroma assim como a capela de S. João Baptista da autoria do arquitecto Diogo de Castilho, de finais do século XV.",
+      "contact":"22 206 2125",
+      "type":2,
+      "images":[
+        {
+          "ref":"igreja_de_s_francisco_1",
+          "number":0
+        },
+        {
+          "ref":"igreja_de_s_francisco_2",
+          "number":1
+        },
+        {
+          "ref":"igreja_de_s_francisco_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":11,
+      "name":"Museu de Arte Contemporânea de Serralves",
+      "lat":41.1597898,
+      "lng":-8.6596661,
+      "schedule":"10:00 - 19:00",
+      "resume":"O Museu de Arte Contemporânea da Fundação de Serralves fica na cidade portuguesa do Porto. O edifício, projectado pelo arquitecto Siza Vieira",
+      "description":"O Museu de Arte Contemporânea da Fundação de Serralves fica na cidade portuguesa do Porto. O edifício, projectado pelo arquitecto Siza Vieira, é envolvido pelo Parque de Serralves (com cerca de 3,5 hectares), onde obras de arte de vários artistas contemporâneos são, também, expostas, ao lado da flora típica da região norte de Portugal, como carvalhos, bétulas e o teixo. O Museu é já considerado um espaço de referência, a nível internacional, no que diz respeito a mostras de arte contemporânea. Na colecção permanente do museu, onde encontramos referenciados muitos artistas de destaque, é essencialmente constituída por obras realizadas desde os finais da década de 60 até aos dias de hoje.",
+      "contact":"22 615 6500",
+      "type":1,
+      "images":[
+        {
+          "ref":"museu_de_arte_contemporânea_de_serralves_1",
+          "number":0
+        },
+        {
+          "ref":"museu_de_arte_contemporânea_de_serralves_2",
+          "number":1
+        },
+        {
+          "ref":"museu_de_arte_contemporânea_de_serralves_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":12,
+      "name":"Convento dos Grilos",
+      "lat":41.1421857,
+      "lng":-8.6126767,
+      "schedule":"",
+      "resume":"A Igreja e Colégio de São Lourenço, popularmente conhecida pela Igreja dos Grilos, é um conjunto de edifícios religiosos na cidade do Porto, em Portugal.",
+      "description":"Construídos pelos jesuítas em 1577 em estilo maneirista barroco-jesuítico, financiados por doações de fiéis, assim como de Frei Luís Álvaro de Távora, aqui sepultado, a Igreja e o Convento de São Lourenço foram erguidos com forte oposição da câmara e da população. No entanto, os seguidores de Santo Inácio de Loyola acabaram por conseguir fundar o tão ambicionado colégio com aulas gratuitas, o que conquistou rapidamente um notável êxito. A oposição da população não era dirigida aos jesuítas, mas ao colégio que pretendiam instituir devido aos privilégios que os cidadãos tinham que impediam a permanência de nobres e fidalgos dentro da cidade, por um período superior a três dias.",
+      "contact":"22 339 5020",
+      "type":1,
+      "images":[
+        {
+          "ref":"convento_dos_grilos_1",
+          "number":0
+        },
+        {
+          "ref":"convento_dos_grilos_2",
+          "number":1
+        },
+        {
+          "ref":"convento_dos_grilos_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":13,
+      "name":"Museu do Carro Eléctrico",
+      "lat":41.1475772,
+      "lng":-8.6329313,
+      "schedule":"10:00 - 18:00",
+      "resume":"O Museu do Carro Eléctrico é um museu da da Sociedade de Transportes Colectivos do Porto, detentor de uma coleção de carros eléctricos, atrelados e veículos.",
+      "description":"O Museu do Carro Eléctrico é um museu da da Sociedade de Transportes Colectivos do Porto, detentor de uma coleção de carros eléctricos, atrelados e veículos. Foi inaugurado em Maio de 1992 e está instalado na antiga central termo-eléctrica de Massarelos, no Porto, em Portugal. Expõe material referente à história do transporte coletivo de tração elétrica sobre carris nesta cidade. O espólio pertencente ao museu dispõe de 16 carros eléctricos, 5 carros atrelados, 2 carros automóveis de apoio aos carros eléctricos. Todos os anos é organizado um desfile de algum deste material na linha entre Massarelos e o Passeio Alegre. Este museu foi gabado em 1996 como «um dos melhores da Europa, se não do mundo» por Nélson Oliveira, à época vice-presidente da APAC.",
+      "contact":"22 615 8185",
+      "type":1,
+      "images":[
+        {
+          "ref":"museu_do_carro_electrico_1",
+          "number":0
+        },
+        {
+          "ref":"museu_do_carro_electrico_2",
+          "number":1
+        },
+        {
+          "ref":"museu_do_carro_electrico_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":14,
+      "name":"Reitoria da Universidade do Porto",
+      "lat":41.146906,
+      "lng":-8.6156328,
+      "schedule":"09:00 - 18:00",
+      "resume":"A Reitoria da Universidade do Porto é um edifício histórico situado na Praça de Gomes Teixeira, na cidade do Porto, em Portugal.",
+      "description":"É um edifício rectangular de estilo neoclássico, inicialmente destinado a Academia Real de Marinha e Comércio. O projecto inicial é da autoria de Carlos Amarante e data de 1807. Durante o período das invasões francesas e das guerras liberais as obras do edifício avançariam muito lentamente. A construção inacabada serviu de hospital durante o cerco do Porto (1832-33). Em 1833 o projecto foi remodelado por J. C. Vitória Vila-Nova. As obras continuaram e o projecto inicial ainda sofreu duas grandes remodelações, em 1862, por Gustavo Gonçalves e Sousa, e em 1898, por António Araújo e Silva. No edifício funcionaram a Academia Politécnica do Porto, o Colégio dos Órfãos, a Academia das Belas-Artes, o Liceu Nacional, o Instituto Industrial (antecessor do ISEP; até 1933), a Faculdade Técnica (hoje Faculdade de Engenharia; até 1937), a Faculdade de Economia (até 1974) e a Faculdade de Ciências da Universidade do Porto (até 2007).",
+      "contact":"22 040 8000",
+      "type":1,
+      "images":[
+        {
+          "ref":"reitoria_da_universidade_do_porto_1",
+          "number":0
+        },
+        {
+          "ref":"reitoria_da_universidade_do_porto_2",
+          "number":1
+        },
+        {
+          "ref":"reitoria_da_universidade_do_porto_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":15,
+      "name":"Palácio de São João Novo",
+      "lat":41.14253,
+      "lng":-8.6176875,
+      "schedule":"14:00 - 19:00",
+      "resume":"O Palácio de São João Novo localiza-se na freguesia de Miragaia, na cidade e Distrito do Porto, em Portugal. De estilo barroco, há quem atribua o seu projeto a Nicolau Nasoni, mas tal não está provado.",
+      "description":"Foi edificado em finais do século XVIII, para habitação de um funcionário público do Porto e, depois da morte do seu primeiro propretário, foi habitado por algumas das mais ilustres famílias da cidade. De estilo barroco, há quem atribua o seu projeto a Nicolau Nasoni, mas tal não está provado. O fundo do edifício está quase encostado às Muralhas Fernandinas. Aquando a segunda invasão francesa em 1809 foi ocupado pelas forças invasoras, tendo servido como hospital militar às tropas liberais na altura do Cerco do Porto. No final das Guerras Liberais, o palacete foi devolvido aos seus proprietários que o viriam a alugar à Tipografia Comercial Portuense e posteriormente à Junta da Província do Douro Litoral que, em 1945, lá instalou o Museu de Etnografia e História do Douro Litoral. Devido a sinais de degradação, potenciados por um incêndio ocorrido em 1984, o palácio encontra-se encerrado desde 1992. O acervo do museu foi depositado em diversos museus, com vista à sua protecção.",
+      "contact":"22 404 8080",
+      "type":1,
+      "images":[
+        {
+          "ref":"palacio_de_sao_joao_novo_1",
+          "number":0
+        },
+        {
+          "ref":"palacio_de_sao_joao_novo_2",
+          "number":1
+        },
+        {
+          "ref":"palacio_de_sao_joao_novo_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":16,
+      "name":"Museu da Farmácia",
+      "lat":41.1749668,
+      "lng":-8.645798,
+      "schedule":"14:00 - 18:00",
+      "resume":"O Museu da Farmácia localizado no edifício da Associação Nacional das Farmácias, em Santa Catarina (Lisboa), foi inaugurado em Junho de 1996.",
+      "description":"O Museu da Farmácia localizado no edifício da Associação Nacional das Farmácias, em Santa Catarina (Lisboa), foi inaugurado em Junho de 1996. As primeiras peças que deram origem a este museu foram as doadas à Associação Nacional de Farmácias, pelo Dr. Salgueiro Basso à qual se seguiram várias doações de outros farmacêuticos associados e de outras instituições. O acervo deste museu representa 5000 anos de história da Saúde e é constituído por inúmeras peças de diversas origens geográficas (Egipto, Roma, Mesopotâmia, etc), sendo de salientar, a reconstituição de quatro Farmácias, como por exemplo, uma Farmácia de Macau, assim como uma farmácia portátil do século XVIII e a farmácia portátil levada a bordo do Space Shuttle Endeavour na missão STS-97. Mostra também diversas máquinas e aparelhos utilizados pelas boticas no fabrico e armazenamento de medicamentos, como almofarizes, vasos de botica, frascos de farmácia de vidro, balanças, matrazes, farmácia portátil utilizada por Roald Amundsen na expedição ao Polo Norte em 1911, farmácia portátil usada por Carlos Sousa no Lisboa Dakar 2006, etc. Uma das peças mais raras em exposição é uma Pedra de Goa.",
+      "contact":"22 616 7995",
+      "type":1,
+      "images":[
+        {
+          "ref":"museu_da_farmacia_1",
+          "number":0
+        },
+        {
+          "ref":"museu_da_farmacia_2",
+          "number":1
+        },
+        {
+          "ref":"museu_da_farmacia_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":17,
+      "name":"Estátua Alfonso de Albuquerque",
+      "lat":41.1577909,
+      "lng":-8.661022,
+      "schedule":"",
+      "resume":"Criado por Diogo de Macedo em 1930, a estátua representa Afonso de Albuquerque com um olhar ousado, segurando um navio em suas mãos.",
+      "description":"Criado por Diogo de Macedo em 1930, a estátua representa Afonso de Albuquerque com um olhar ousado, segurando um navio em suas mãos, simbolizando sua liderança de frota. Afonso de Albuquerque nasceu por volta de 1462 e foi educado na residência real de D. Afonso V. Em 1503 foi escolhido para dirigir uma viagem à Índia, que ocorreu apenas com D. Manuel II, por quem foi designado vice-rei de Índia. Ele conquistou Ormus, Goa e Malaca e ficou conhecido por sua forte política de defesa da terra. Morreu em 1515, ao retornar de Goa a Portugal.",
+      "contact":"",
+      "type":0,
+      "images":[
+        {
+          "ref":"estatua_alfonso_de_albuquerque_1",
+          "number":0
+        }
+      ]
+    },
+    {
+      "id":18,
+      "name":"Estátua Antero de Figueiredo",
+      "lat":41.154100859861,
+      "lng":-8.6740493774414,
+      "schedule":"",
+      "resume":"Pequeno jardim situado em frente ao Mercado da Foz. Funciona como um jardim de passagem e não tanto como uma área de passeio, e nele se destaca, ao centro, um busto do escritor que lhe dá nome.",
+      "description":"Nasceu em Lourosa (Coimbra) no ano de 1866 e morreu na Foz do Douro. Após os estudos secundários em Braga, matriculou-se na Faculdade de Medicina de Coimbra. Conheceu nessa cidade António Nobre, João Penha, Agostinho de Campos e Eugénio de Castro. Interrompeu o curso para viajar pela Europa e depois deslocou-se para os Estados Unidos da América como secretário particular do Ministro do Brasil em Washington, DC. Regressa à Pátria em 1891 e matricula-se na Faculdade de Letras de Lisboa onde se licencia. Antero de Figueiredo nasceu para a beleza das coisas e sabe traduzir o seu encantamento em requintes de linguagem policrónica, ora num tom solene de majestade, ora num puro visualismo do real. Tudo isto impregnado de espiritualidade, sobretudo em livros como Fátima, Amor Supremo, Non Sum Dignus. De qualquer forma, estão sempre em causa os ideais da Pátria e os da Religião. Em Senhora do Amparo e Miradouro desenha com perícia Perfis, Tipos e Casos. Figura entre os mais finos cultores e amantes da língua portuguesa, e a ele se devem algumas das mais sugestivas páginas deste idioma.",
+      "contact":"",
+      "type":0,
+      "images":[
+        {
+          "ref":"estatua_antero_de_figueiredo_1",
+          "number":0
+        },
+        {
+          "ref":"estatua_antero_de_figueiredo_2",
+          "number":1
+        }
+      ]
+    },
+    {
+      "id":19,
+      "name":"Estátua D. Pedro IV",
+      "lat":41.1464494,
+      "lng":-8.6113822,
+      "schedule":"",
+      "resume":"O Monumento a D. Pedro IV situa-se na Praça da Liberdade, na cidade do Porto, em Portugal. É uma estátua equestre da autoria do escultor Célestin Anatole Calmels.",
+      "description":"Pedro IV (Queluz, 12 de outubro de 1798 – Queluz, 24 de setembro de 1834), apelidado de Libertador e Rei Soldado, foi o primeiro Imperador do Brasil como Pedro I de 1822 até sua abdicação em 1831, e também Rei de Portugal e Algarves como Pedro IV entre março e maio de 1826. Era o quarto filho do rei João VI de Portugal e sua esposa a infanta Carlota Joaquina da Espanha, sendo assim um membro da Casa de Bragança. Pedro viveu seus primeiros anos de vida em Portugal até que tropas francesas invadiram o país em 1807, forçando a transferência da família real para a colônia do Brasil.",
+      "contact":"",
+      "type":0,
+      "images":[
+        {
+          "ref":"d_pedro_iv_1",
+          "number":0
+        },
+        {
+          "ref":"d_pedro_iv_2",
+          "number":1
+        },
+        {
+          "ref":"d_pedro_iv_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":20,
+      "name":"Estátua D. Pedro V",
+      "lat":41.145165125832,
+      "lng":-8.606732064197,
+      "schedule":"",
+      "resume":"Teixeira Lopes é autora desta escultura inaugurada em fevereiro de 1866 em homenagem a D. Pedro V.",
+      "description":"D. Pedro V (Lisboa, 16 de setembro de 1837 – Lisboa, 11 de novembro de 1861), apelidado de o Esperançoso e o Muito Amado, foi o Rei de Portugal e Algarves de 1853 até sua morte. Era o filho mais velho da rainha Maria II e seu marido o rei Fernando II. Ele ascendeu ao trono com apenas dezasseis anos de idade após a morte de sua mãe, com seu pai atuando como regente do reino até sua maioridade em 1855.",
+      "contact":"",
+      "type":0,
+      "images":[
+        {
+          "ref":"estatua_d_pedro_v_1",
+          "number":0
+        },
+        {
+          "ref":"estatua_d_pedro_v_2",
+          "number":1
+        }
+      ]
+    },
+    {
+      "id":21,
+      "name":"Estátua Abel Salazar",
+      "lat":41.148932,
+      "lng":-8.6187315,
+      "schedule":"",
+      "resume":"Estátua em bronze criada por Hélder Carvalho em 2009 representa Abel Salazar, com pedestal feito em granito, oferecida à cidade pela Fundação Engº António Almeida",
+      "description":"Abel de Lima Salazar (Guimarães, 19 de Julho de 1889 — Lisboa, 29 de Dezembro de 1946) foi um médico, professor, investigador, pintor e resistente ao regime salazarista português que trabalhou e viveu no Porto. As suas obras artísticas, com referências sociais, antecipam o movimento neorrealista na pintura portuguesa. O reputado Instituto de Ciências Biomédicas Abel Salazar da Universidade do Porto presta-lhe homenagem e suas pinturas com suas referências sociais antecipa o movimento neo-realista na pintura Português. Ele não estava relacionada com António de Oliveira Salazar, o ditador Português.",
+      "contact":"",
+      "type":0,
+      "images":[
+        {
+          "ref":"estatua_abel_salazar_1",
+          "number":0
+        },
+        {
+          "ref":"estatua_abel_salazar_2",
+          "number":1
+        }
+      ]
+    },
+    {
+      "id":22,
+      "name":"Estátua Adelino Amaro da Costa",
+      "lat":41.1483403,
+      "lng":-8.6256377,
+      "schedule":"08:00 - 21:00",
+      "resume":"Adelino Manuel Lopes Amaro da Costa (Oeiras, Algés, 18 de Abril de 1943 — Loures, Camarate, 4 de Dezembro de 1980) foi um engenheiro civil e político português.",
+      "description":"Em 1975, após o 25 de Abril, fundou com Diogo Freitas do Amaral o Centro Democrático-Social (CDS), com as dificuldades impostas pela radicalização da política portuguesa, que dificultaram a implantação do partido a nível nacional, devido aos boicotes sucessivos à sua actividade partidária, sendo considerado nessa época quase como um partido neo-fascista. Em 1978 ajudou a celebrar o acordo político que viabilizou o 2.º governo constitucional, dirigido por Mário Soares, e que teve a participação de membros do partido, como Sá Machado e Rui Pena. No ano seguinte, com o falhanço do acordo político com o PS, negociou pelo CDS a criação da Aliança Democrática (AD), que juntou o PPD, o PPM e o CDS, numa coligação eleitoral, que se apresentou às eleições em todos os círculos eleitorais, à excepção da Madeira. Amaro da Costa foi nomeado ministro da defesa nacional, tendo sido empossado com todo o restante governo em 3 de Janeiro de 1980, o primeiro ministro civil da defesa desde o 25 de Abril de 1974. A passagem pelo governo foi muito curta, devido à sua morte no desastre de aviação ocorrido em Camarate na noite de 4 de Dezembro de 1980, quando se dirigia de avião com o primeiro ministro Sá Carneiro e respectivas mulheres para o Porto, para um comício eleitoral no âmbito da campanha para a Presidência da República, que decorria nessa altura.",
+      "contact":"",
+      "type":0,
+      "images":[
+        {
+          "ref":"estatua_adelino_amaro_da_costa_1",
+          "number":0
+        },
+        {
+          "ref":"estatua_adelino_amaro_da_costa_2",
+          "number":1
+        }
+      ]
+    },
+    {
+      "id":23,
+      "name":"Estátua Guerra Junqueiro",
+      "lat":41.1425396,
+      "lng":-8.6128951,
+      "schedule":"",
+      "resume":"Abílio Manuel Guerra Junqueiro (Ligares, Freixo de Espada à Cinta, 15 de setembro de 1850 — Lisboa, 7 de julho de 1923) foi alto funcionário administrativo, político, deputado, jornalista, escritor e poeta.",
+      "description":" Foi o poeta mais popular da sua época e o mais típico representante da chamada Escola Nova. Poeta panfletário, a sua poesia ajudou a criar o ambiente revolucionário que conduziu à implantação da República. Foi entre 1911 e 1914 o embaixador de Portugal na Suíça (o título era ministro de Portugal na Suíça). Guerra Junqueiro formou-se em direito na Universidade de Coimbra",
+      "contact":"22 200 3689",
+      "type":0,
+      "images":[
+        {
+          "ref":"estatua_guerra_junqueiro_1",
+          "number":0
+        },
+        {
+          "ref":"estatua_guerra_junqueiro_2",
+          "number":1
+        },
+        {
+          "ref":"estatua_guerra_junqueiro_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":24,
+      "name":"Museu de História e Etnologia da Terra da Maia",
+      "lat":41.2650701,
+      "lng":-8.6132008,
+      "schedule":"09:00 - 17:30",
+      "resume":"O Museu de História e Etnologia da Terra da Maia localiza-se na Vila do Castêlo da Maia, e encontra-se instalado num edifício que funcionou como Paços do concelho até ao ano 1902.",
+      "description":"O Museu de História e Etnologia da Terra da Maia localiza-se na Vila do Castêlo da Maia, e encontra-se instalado num edifício que funcionou como Paços do concelho até ao ano 1902, e cujas origens devem remontar ao século XVIII, tendo como envolvente o parque e o monte de Santo Ovídio. Possui, no que respeita a conteúdos, duas valências fundamentais: História - Na origem do nome Maia não se encontra um sítio, um lugar ou um acontecimento, mas sim um identidade cultural e mais tarde um espaço geográfico que pelas suas características geomorfológicas e pedológicas passaram a ter a designação de Terra. Terra da Maia, terra fértil, terra de tradições e de passado com uma forte ocupação humana. Com o Museu de Etnologia procuramos as Gentes da Maia - os seus costumes, a sua cultura. Cultura entendida como aquilo que é recebido do meio onde se nasce: seja uma técnica, uma forma de subsistência ou um comportamento social. Este Museu é pois o local da preservação e divulgação da tradição, das heranças sociais da Maia rural. É pois complemento natural Centro de Estudos da Ruralidade (CER) que se situa na Quinta da Caverneira, Águas Santas. A programação do Museu assenta sobretudo na realização de exposições temporárias de longa e curta duração que têm como missão dar rotatividade às colecções e divulgar história e a etnografia da Maia.",
+      "contact":"22 987 1144",
+      "type":1,
+      "images":[
+        {
+          "ref":"museu_maia_1",
+          "number":0
+        },
+        {
+          "ref":"museu_maia_2",
+          "number":1
+        },
+        {
+          "ref":"museu_maia_3",
+          "number":2
+        }
+      ]
+    },
+    {
+      "id":25,
+      "name":"Estátua do Lidador",
+      "lat":41.2330918,
+      "lng":-8.6221345,
+      "schedule":"",
+      "resume":"Esta singular estátua equestre é da autoria do escultor Lima de Carvalho e foi inaugurada no dia 9 de Julho do ano 1984. Inscrição: A Gonçalo Mendes da Maia - O Lidador - Homenagem da sua terra e da sua gente - 1984",
+      "description":"Homenagem ao cavaleiro Gonçalo Mendes da Maia, um dos gloriosos militares que combateram ao lado de D. Afonso Henriques pela independência e alargamento territorial de Portugal. Herói da Fundação da Nacionalidade, que o primeiro Rei de Portugal, nomeou seu Adeantado. O cognome de O Lidador deve-se às diversas vitórias alcançadas em batalhas contra os mouros. Nasceu em 1079, na sua mocidade foi um Fidalgo turbulento e arrebatado, faleceu aos 90 anos, em combate na Batalha de Ourique.",
+      "contact":"",
+      "type":2,
+      "images":[
+        {
+          "ref":"estatua_lidador_1",
+          "number":0
+        },
+        {
+          "ref":"estatua_lidador_2",
+          "number":1
+        }
+      ]
+    }
+  ]
+}

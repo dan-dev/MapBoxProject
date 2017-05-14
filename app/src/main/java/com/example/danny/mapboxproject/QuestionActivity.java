@@ -37,7 +37,7 @@ public class QuestionActivity extends AppCompatActivity {
         for( Question q : questionList ){
             if(q.getId().equals(id)){
                 questionTextView.setText(q.getQuestion());
-                answer = q.getAnswer();
+                answer = q.getAnswerA();
             }
         }
 
@@ -60,5 +60,7 @@ public class QuestionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mapBTN.setVisibility(View.GONE);
     }
 }

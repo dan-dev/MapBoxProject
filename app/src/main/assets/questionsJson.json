@@ -1,0 +1,107 @@
+[
+  {
+    "id":0,
+    "place":25,
+    "question":"Qual das seguintes figuras é homenageada como o Lidador?",
+    "correct":3,
+    "answers":[
+      {
+        "option":1,
+        "answer":"D Alfonso de Albuquerque"
+      },{
+        "option":2,
+        "answer":"D Pedro IV"
+      },{
+        "option":3,
+        "answer":"Gonçalo Mendes"
+      },{
+        "option":4,
+        "answer":"Antero de Figueiredo"
+      }
+    ]
+  },
+  {
+  "id":1,
+  "place":11,
+  "question":"Fui projetado por Siza Vieira. Quem sou?",
+  "correct":1,
+  "answers":[
+      {
+        "option":1,
+        "answer":"Museu de Arte Contemporânea de Serralves"
+      },{
+        "option":2,
+        "answer":"Igreja de S. Francisco"
+      },{
+        "option":3,
+        "answer":"Museu do Carro Eléctrico"
+      },{
+        "option":4,
+        "answer":"Museu da Farmácia"
+      }
+    ]
+  },
+  {
+    "id":2,
+    "place":17,
+    "question":"Tenho um navio nas mãos! Quem serei?",
+    "correct":1,
+    "answers":[
+      {
+        "option":1,
+        "answer":"Alfonso de Albuquerque"
+      },{
+        "option":2,
+        "answer":"Abel Salazar"
+      },{
+        "option":3,
+        "answer":"Adelino Amaro da Costa"
+      },{
+        "option":4,
+        "answer":"Gonçalo Mendes"
+      }
+    ]
+  },
+  {
+    "id":3,
+    "place":19,
+    "question":"Sou o 1º imperador do Brasil! Consegues dizer quem sou?",
+    "correct":3,
+    "answers":[
+      {
+        "option":1,
+        "answer":"D João I"
+      },{
+        "option":2,
+        "answer":"D Pedro V"
+      },{
+        "option":3,
+        "answer":"D Pedro IV"
+      },{
+        "option":4,
+        "answer":"D Maria I"
+      }
+    ]
+  },
+  {
+    "id":4,
+    "place":23,
+    "question":"Fui embaixador de Portugal na Suíça e formei em direito na Universidade de Coimbra. Quem sou?",
+    "correct":4,
+    "answers":[
+      {
+        "option":1,
+        "answer":"Siza Vieira"
+      },{
+        "option":2,
+        "answer":"D Pedro V"
+      },{
+        "option":3,
+        "answer":"Adelino Amaro da Costa"
+      },{
+        "option":4,
+        "answer":"Guerra Junqueiro"
+      }
+    ]
+  }
+]

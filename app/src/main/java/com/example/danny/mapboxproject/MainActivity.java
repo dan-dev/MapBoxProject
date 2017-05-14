@@ -1,12 +1,17 @@
 package com.example.danny.mapboxproject;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,9 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
-import com.mapbox.mapboxsdk.constants.MyBearingTracking;
 import com.mapbox.mapboxsdk.constants.MyLocationTracking;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -25,6 +31,12 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.services.android.telemetry.permissions.PermissionsListener;
 import com.mapbox.services.android.telemetry.permissions.PermissionsManager;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
     private MapView mapView;
     private MapboxMap map;
     Context context = this;
+    JSONArray arrayPlaces;
+    JSONArray arrayTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +56,39 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
 
         setContentView(R.layout.activity_main);
 
+        IconFactory iconFactory = IconFactory.getInstance(MainActivity.this);
+
+        final Icon statue = iconFactory.fromResource(R.drawable.ic_estatua);
+        final Icon museum = iconFactory.fromResource(R.drawable.ic_museu);
+        final Icon church = iconFactory.fromResource(R.drawable.ic_igreja);
+
+        String json = "";
+
+        try {
+            InputStream inputStream = getAssets().open("placeJson.json");
+            int size = inputStream.available();
+
+            byte[] buffer = new byte[size];
+
+            inputStream.read(buffer);
+
+            inputStream.close();
+
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            arrayTypes = jsonObject.getJSONArray("type");
+            arrayPlaces = jsonObject.getJSONArray("places");
+            Log.e("-------------array: ", ""+arrayPlaces.length());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         final Button questionsBTN = (Button) findViewById(R.id.questionBtn);
 
         final FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButtonMain);
@@ -49,18 +96,20 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, QuestionListActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(context, QuestionListActivity.class);
+                //startActivity(intent);
             }
         });
+        floatingActionButton.setVisibility(View.GONE);
 
         questionsBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, QuestionListActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(context, QuestionListActivity.class);
+                //startActivity(intent);
             }
         });
+        questionsBTN.setVisibility(View.GONE);
 
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
@@ -72,45 +121,115 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
 
                 permissionsManager = new PermissionsManager(MainActivity.this);
                 if (!PermissionsManager.areLocationPermissionsGranted(MainActivity.this)) {
+                    Log.e("-------------", "no permission");
                     permissionsManager.requestLocationPermissions(MainActivity.this);
                 } else {
-                    enableLocationTracking();
+                    Log.e("-------------","permission");
+                    //enableLocationTracking();
                 }
 
-                List<LatLng> coordsList = new ArrayList<LatLng>();
-                final Place place = new Place();
-                final List<Place> placeList = place.getPlacesList();
+                if(!checkGPS()){
+                    enableGPS();
+                }
 
-                int i = 0;
-                for (Place p : placeList) {
+                enableLocationTracking();
+
+                List<LatLng> coordsList = new ArrayList<LatLng>();
+                //final Place place = new Place();
+                //final List<Place> placeList = place.getPlacesList();
+
+                //int i = 0;
+                /*for (Place p : placeList) {
                     LatLng latLng = p.getCoord();
                     mapboxMap.addMarker(new MarkerOptions().position(new LatLng(latLng)).title(p.getName())).setId(i);
                     i++;
+                }*/
+
+                for(int i = 0; i < arrayPlaces.length(); i++){
+                    try {
+                        Icon icon = null;
+                        JSONObject jsonObject = arrayPlaces.getJSONObject(i);
+                        int type = jsonObject.getInt("type");
+                        if (type == 0){
+                            icon = statue;
+                        } else if (type == 1){
+                            icon = museum;
+                        } else if (type == 2){
+                            icon = church;
+                        }
+                        LatLng latLng = new LatLng(jsonObject.getDouble("lat"), jsonObject.getDouble("lng"));
+                        mapboxMap.addMarker(new MarkerOptions().position(new LatLng(latLng)).title(jsonObject.getString("name")).icon(icon)).setId(i);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
                     @Override
                     public View getInfoWindow(@NonNull Marker marker) {
+
+                        //Log.e("---------", Double.toString(distance));
                         //Toast.makeText(getApplicationContext(), "clicked", Toast.LENGTH_SHORT).show();
                         View v = getLayoutInflater().inflate(R.layout.layout_info_window, null);
                         TextView textView = (TextView) v.findViewById(R.id.text);
+                        TextView textView2 = (TextView) v.findViewById(R.id.textView);
                         ImageView imageView = (ImageView) v.findViewById(R.id.image);
                         Button button = (Button) v.findViewById(R.id.button_go);
-                        final int id = (int) marker.getId();
-                        textView.setText(placeList.get(id).getName());
-                        Resources resources = context.getResources();
-                        final int res = resources.getIdentifier(placeList.get(id).getImage(), "drawable", context.getPackageName());
-                        imageView.setImageResource(res);
 
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                //Toast.makeText(getApplicationContext(), "showing", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getBaseContext(), PlaceDetails.class);
-                                intent.putExtra("id", id);
-                                startActivity(intent);
+                        String placeJson = "";
+
+                        try {
+
+                            final int id = (int) marker.getId();
+                            textView.setText(arrayPlaces.getJSONObject(id).getString("name"));
+
+                            placeJson = arrayPlaces.getJSONObject(id).toString();
+
+                            Double distance = -1.0;
+                            if(map.getMyLocation() == null){
+                                Log.e("------------------", "null");
                             }
-                        });
+                            else{
+                                distance = marker.getPosition().distanceTo(new LatLng(map.getMyLocation().getLatitude(), map.getMyLocation().getLongitude()));
+                                if(distance > 1000){
+                                    distance = distance/1000;
+                                    textView2.setText("Distance: " + String.format("%.2f", distance) + "km");
+                                }
+                                else{
+                                    textView2.setText("Distance: " + String.format("%.2f", distance) + "m");
+                                }
+                            }
+
+                            //Resources resources = context.getResources();
+                            //final int res = resources.getIdentifier(placeList.get(id).getImage(), "drawable", context.getPackageName());
+                            //imageView.setImageResource(res);
+
+                            Resources resources = context.getResources();
+                            final int resourceId = resources.getIdentifier(arrayPlaces.getJSONObject(id).getJSONArray("images").getJSONObject(0).getString("ref"), "drawable",
+                                    context.getPackageName());
+
+                            imageView.setImageResource(resourceId);
+
+                            /*if(marker.getPosition().distanceTo(new LatLng(map.getMyLocation().getLatitude(), map.getMyLocation().getLongitude())) > 10){
+                            }*/
+
+                            final Double finalDistance = distance;
+                            final String finalPlaceJson = placeJson;
+                            button.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    //Toast.makeText(getApplicationContext(), finalDistance +"", Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(getBaseContext(), PlaceDetails.class);
+
+                                    intent.putExtra("id", id);
+                                    intent.putExtra("json", finalPlaceJson);
+                                    startActivity(intent);
+                                }
+                            });
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         return v;
                     }
                 });
@@ -160,15 +279,47 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
         mapView.onSaveInstanceState(outState);
     }
 
-    private void enableLocationTracking() {
+    private boolean checkGPS(){
+        LocationManager locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
 
+        boolean gps = false;
+
+        try{
+            gps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception e){}
+
+        return gps;
+    }
+
+    private void enableGPS(){
+        new AlertDialog.Builder(context).setTitle("Enable GPS").setMessage("Please enable GPS")
+                .setPositiveButton("Enable", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        context.startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Nah", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
+
+    }
+
+    private void enableLocationTracking() {
         map.setMyLocationEnabled(true);
 
         // Disable tracking dismiss on map gesture
         map.getTrackingSettings().setDismissAllTrackingOnGesture(false);
 
         // Enable location and bearing tracking
-        //map.getTrackingSettings().setMyLocationTrackingMode(MyLocationTracking.TRACKING_FOLLOW);
+        map.getTrackingSettings().setMyLocationTrackingMode(MyLocationTracking.TRACKING_FOLLOW);
+        map.setMinZoomPreference(10);
+        map.setMaxZoomPreference(15);
         //map.getTrackingSettings().setMyBearingTrackingMode(MyBearingTracking.COMPASS);
     }
 

@@ -1,13 +1,13 @@
 package com.example.danny.mapboxproject;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,40 +15,48 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionListActivity extends AppCompatActivity {
+public class QuestionListActivity extends Fragment {
+
+    public QuestionListActivity(){}
 
     ListView questionListView;
-    Context context = this;
+    //Context context = this;
+
+    View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_question_list);
+        view = inflater.inflate(R.layout.activity_question_list, container, false);
 
-        final Button mapBTN = (Button) findViewById(R.id.mapBTN);
+        final Button mapBTN = (Button) view.findViewById(R.id.mapBTN);
 
-        final FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        final FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(context, MainActivity.class);
+                //startActivity(intent);
+                //QuestionListActivity.super.onBackPressed();
             }
         });
+
+        floatingActionButton.setVisibility(View.GONE);
 
 
         mapBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
 
         mapBTN.setVisibility(View.INVISIBLE);
 
-        questionListView = (ListView) findViewById(R.id.questionListView);
+        questionListView = (ListView) view.findViewById(R.id.questionListView);
 
         final Question question = new Question();
 
@@ -59,7 +67,7 @@ public class QuestionListActivity extends AppCompatActivity {
             list.add(q);
         }
 
-        ItemAdapter adapter = new ItemAdapter(context, list);
+        ItemAdapter adapter = new ItemAdapter(getContext(), list);
 
         /*for (Question q : questionList){
             String s = "";
@@ -83,15 +91,17 @@ public class QuestionListActivity extends AppCompatActivity {
         questionListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(questionList.get(position).getAnswered()==false && questionList.get(position).getLocked() == false){
-                    Intent intent = new Intent(getBaseContext(), QuestionActivity.class);
+                if(questionList.get(position).getAnswered()==0 && questionList.get(position).getLocked() == 0){
+                    Intent intent = new Intent(getActivity().getBaseContext(), QuestionActivity.class);
                     intent.putExtra("id", questionList.get(position).getId());
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Select a question that is open and unanswered.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Select a question that is open and unanswered.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        return view;
     }
 }
