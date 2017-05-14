@@ -221,7 +221,12 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
                                     //Toast.makeText(getApplicationContext(), finalDistance +"", Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(getBaseContext(), PlaceDetails.class);
-
+                                    if(finalDistance > 5 || finalDistance<0){
+                                        intent.putExtra("close", 0);
+                                    }
+                                    else {
+                                        intent.putExtra("close", 1);
+                                    }
                                     intent.putExtra("id", id);
                                     intent.putExtra("json", finalPlaceJson);
                                     startActivity(intent);

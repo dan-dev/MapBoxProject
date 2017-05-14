@@ -2,8 +2,9 @@ package com.example.danny.mapboxproject;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -15,8 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class PlaceDetails extends AppCompatActivity {
-    int id, close;
+public class AnsweredPlaceDetails extends AppCompatActivity {
+    int id;
     String json;
     Context context = this;
     private SliderLayout sliderLayout;
@@ -24,35 +25,31 @@ public class PlaceDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_place_details);
+        setContentView(R.layout.activity_answered_place_details);
         Bundle bundle = getIntent().getExtras();
 
-        close = bundle.getInt("close");
         id = bundle.getInt("id");
         json = bundle.getString("json");
 
-        TextView name = (TextView) findViewById(R.id.name);
-        TextView details = (TextView) findViewById(R.id.details);
+        TextView textView = (TextView) findViewById(R.id.name);
+        TextView textView2 = (TextView) findViewById(R.id.details);
         TextView contact = (TextView) findViewById(R.id.contactText);
         TextView schedule = (TextView) findViewById(R.id.schedule);
-        TextView seeMore = (TextView) findViewById(R.id.seeMore);
         sliderLayout = (SliderLayout) findViewById(R.id.image_slider);
 
         try {
             JSONObject jsonObject = new JSONObject(json);
-            name.setText(jsonObject.getString("name"));
-            if (close == 1){
-                details.setText(jsonObject.getString("description"));
-
+            textView.setText(jsonObject.getString("name"));
+            textView2.setText(jsonObject.getString("description"));
+            if(jsonObject.getString("contact").isEmpty()){
+                //contact.setVisibility(View.GONE);
             }
-            else{
-                details.setText(jsonObject.getString("resume"));
-            }
-            if(jsonObject.getString("contact").isEmpty()){ }
             else{
                 contact.setText(jsonObject.getString("contact"));
             }
-            if(jsonObject.getString("schedule").isEmpty()){ }
+            if(jsonObject.getString("schedule").isEmpty()){
+                //contact.setVisibility(View.GONE);
+            }
             else{
                 schedule.setText(jsonObject.getString("schedule"));
             }

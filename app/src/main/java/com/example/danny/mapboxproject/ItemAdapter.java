@@ -1,15 +1,12 @@
 package com.example.danny.mapboxproject;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import java.util.ArrayList;
 
@@ -27,7 +24,6 @@ public class ItemAdapter extends ArrayAdapter<Question>{
     public ItemAdapter(Context context, ArrayList<Question> items){
         super(context, R.layout.question_list_item_layout, items);
 
-        Log.e("entrou", "------------");
         ArrayList<Integer> idStrings = new ArrayList<Integer>();
         ArrayList<Integer> isLockedBooleen = new ArrayList<Integer>();
         ArrayList<Integer> isAnsweredBooleen = new ArrayList<Integer>();
@@ -52,11 +48,8 @@ public class ItemAdapter extends ArrayAdapter<Question>{
 
     static class ViewHolder{
         ImageView imageView;
-        TextView textView;
         TextView textView2;
     }
-
-    int number = 0;
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
@@ -66,16 +59,12 @@ public class ItemAdapter extends ArrayAdapter<Question>{
             convertView = inflater.inflate(R.layout.question_list_item_layout, null);
             holder = new ViewHolder();
             holder.imageView = (ImageView) convertView.findViewById(R.id.question_item_image);
-            holder.textView = (TextView) convertView.findViewById(R.id.question_item_text);
             holder.textView2 = (TextView) convertView.findViewById(R.id.question_item_text2);
             convertView.setTag(holder);
         }
         else{
             holder = (ViewHolder) convertView.getTag();
         }
-        number = position;
-        number = number + 1;
-        holder.textView.setText("Question " + number);
         holder.textView2.setText(questionStrings[position]);
         if(isAnsweredBooleen[position]==1){
             holder.imageView.setImageResource(R.drawable.ic_check_box_black_24dp);

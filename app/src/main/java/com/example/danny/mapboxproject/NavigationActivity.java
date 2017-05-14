@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +14,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private DatabaseManager dbm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +44,13 @@ public class NavigationActivity extends AppCompatActivity
             }
         });
 
+        dbm = new DatabaseManager(getBaseContext());
+        dbm.getWritableDatabase();
+
+        if(dbm.isdbEmpty()){
+            fillDatabase();
+        }
+
         fab.setVisibility(View.GONE);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -43,6 +61,48 @@ public class NavigationActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void fillDatabase(){
+        String json = "";
+
+        try {
+            InputStream inputStream = getAssets().open("questionsJson.json");
+            int size = inputStream.available();
+
+            byte[] buffer = new byte[size];
+
+            inputStream.read(buffer);
+
+            inputStream.close();
+
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            //Log.e("-------------array: ", ""+arrayPlaces.length());
+            for(int i = 0; i < jsonArray.length(); i++){
+                Question question = new Question();
+                question.setId(jsonArray.getJSONObject(i).getInt("id"));
+                question.setPlaceID(jsonArray.getJSONObject(i).getInt("place"));
+                question.setCorrect(jsonArray.getJSONObject(i).getInt("correct"));
+                question.setQuestion(jsonArray.getJSONObject(i).getString("question"));
+                question.setAnswerA(jsonArray.getJSONObject(i).getJSONArray("answers").getJSONObject(0).getString("answer"));
+                question.setAnswerB(jsonArray.getJSONObject(i).getJSONArray("answers").getJSONObject(1).getString("answer"));
+                question.setAnswerC(jsonArray.getJSONObject(i).getJSONArray("answers").getJSONObject(2).getString("answer"));
+                question.setAnswerD(jsonArray.getJSONObject(i).getJSONArray("answers").getJSONObject(3).getString("answer"));
+                question.setAnswered(0);
+                question.setLocked(1);
+                dbm.addNewQuestion(question);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        dbm.unlockRandomQuestion();
     }
 
     @Override
@@ -90,20 +150,23 @@ public class NavigationActivity extends AppCompatActivity
             QuestionListActivity activity = new QuestionListActivity();
             android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
-            //activity.setArguments(bundle);
             fragmentTransaction.replace(R.id.fragment_layout, activity).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_slideshow) {
-
+            AnsweredQuestionList activity = new AnsweredQuestionList();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_layout, activity).addToBackStack(null).commit();
         } else if (id == R.id.nav_manage) {
             PlaceList activity = new PlaceList();
             android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
-            //activity.setArguments(bundle);
             fragmentTransaction.replace(R.id.fragment_layout, activity).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_share) {
-
+            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+            dbm.dropTble(dbm.getWritableDatabase());
+            fillDatabase();
         } else if (id == R.id.nav_send) {
 
         }

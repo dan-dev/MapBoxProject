@@ -22,6 +22,8 @@ public class QuestionListActivity extends Fragment {
     ListView questionListView;
     //Context context = this;
 
+    private DatabaseManager dbm;
+
     View view;
 
     @Override
@@ -45,6 +47,8 @@ public class QuestionListActivity extends Fragment {
 
         floatingActionButton.setVisibility(View.GONE);
 
+        dbm = new DatabaseManager(getActivity());
+        dbm.getWritableDatabase();
 
         mapBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +64,8 @@ public class QuestionListActivity extends Fragment {
 
         final Question question = new Question();
 
-        final List<Question> questionList = question.getQuestionList();
+        //final List<Question> questionList = question.getQuestionList();
+        final List<Question> questionList = dbm.getOpenQuestions();
         final ArrayList<Question> list = new ArrayList<>();
 
         for (Question q : questionList){

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -57,6 +58,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void dropTble(SQLiteDatabase db){
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTION);
+        onCreate(db);
+    }
+
     public void addNewQuestion(Question question){
         SQLiteDatabase database = this.getWritableDatabase();
         String query = "INSERT INTO " + TABLE_QUESTION + "( " + COLUMN_QUESTION_ID + ", "
@@ -65,14 +71,52 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 + COLUMN_QUESTION_ANSWER_A + ", " + COLUMN_QUESTION_ANSWER_B + ", "
                 + COLUMN_QUESTION_ANSWER_C + ", " + COLUMN_QUESTION_ANSWER_D + ", "
                 + COLUMN_QUESTION_CORRECT
-                + ") VALUES (" + question.getId() + ", '" + question.getPlaceID() + ", "
-                + question.getQuestion() + "', '" + question.getLocked() + ", '"
-                + question.getAnswered() + "', '" + question.getAnswerA() + ", '"
-                + question.getAnswerB() + "', '" + question.getAnswerC() + ", '"
-                + question.getAnswerD() + ", '" + question.getCorrect()
-                + "');";
+                + ") VALUES (" + question.getId() + ", " + question.getPlaceID() + ", '"
+                + question.getQuestion() + "', " + question.getLocked() + ", "
+                + question.getAnswered() + ", '" + question.getAnswerA() + "', '"
+                + question.getAnswerB() + "', '" + question.getAnswerC() + "', '"
+                + question.getAnswerD() + "', " + question.getCorrect()
+                + ");";
         database.execSQL(query);
         database.close();
+    }
+
+    public boolean isdbEmpty(){
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "SELECT COUNT(*) FROM " + TABLE_QUESTION;
+        Cursor cursor = database.rawQuery(query, null);
+        cursor.moveToFirst();
+        database.close();
+        int count = cursor.getInt(0);
+        if(count>0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public void unlockRandomQuestion(){
+        int rnd = getRandomLockedQuestion();
+        if(rnd == -1){}
+        else{
+            unlockQuestion(rnd);
+        }
+    }
+
+    public int getRandomLockedQuestion(){
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "SELECT " + COLUMN_QUESTION_ID + " FROM " + TABLE_QUESTION + " WHERE " + COLUMN_QUESTION_ISLOCKED
+                + " = 1 ORDER BY RANDOM() LIMIT 1";
+        Cursor cursor = database.rawQuery(query, null);
+        cursor.moveToFirst();
+        database.close();
+        if (cursor.getCount()==0){
+            return -1;
+        } else{
+            int id = cursor.getInt(0);
+            return id;
+        }
     }
 
     public void setQuestionAnswered(int id){
@@ -81,6 +125,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 + " WHERE " + COLUMN_QUESTION_ID + " = " + id;
         database.execSQL(query);
         database.close();
+        unlockRandomQuestion();
     }
 
     public void unlockQuestion(int id){
@@ -89,6 +134,26 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 + " WHERE " + COLUMN_QUESTION_ID + " = " + id;
         database.execSQL(query);
         database.close();
+    }
+
+    public Question getQuestion(int id){
+        Question question = new Question();
+        String query = "SELECT * FROM " + TABLE_QUESTION + " WHERE " + COLUMN_QUESTION_ID + " = "+ id;
+        SQLiteDatabase sq = this.getWritableDatabase();
+        Cursor cursor = sq.rawQuery(query, null);
+        while (cursor.moveToNext()){
+            question.setId(cursor.getInt(0));
+            question.setPlaceID(cursor.getInt(1));
+            question.setQuestion(cursor.getString(2));
+            question.setLocked(cursor.getInt(3));
+            question.setAnswered(cursor.getInt(4));
+            question.setAnswerA(cursor.getString(5));
+            question.setAnswerB(cursor.getString(6));
+            question.setAnswerC(cursor.getString(7));
+            question.setAnswerD(cursor.getString(8));
+            question.setCorrect(cursor.getInt(9));
+        }
+        return question;
     }
 
     public ArrayList<Question> getAnsweredQuestions(){

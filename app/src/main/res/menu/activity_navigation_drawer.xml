@@ -5,31 +5,31 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@android:drawable/ic_dialog_map"
-            android:title="Map" />
+            android:title="Mapa" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@android:drawable/ic_menu_help"
-            android:title="Questions" />
+            android:title="Questoes Abertas" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@android:drawable/ic_menu_agenda"
-            android:title="--Answers--Nothing" />
+            android:title="Questoes Respondidas" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@android:drawable/btn_star"
-            android:title="Places" />
+            android:title="Sitios" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Opções">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@android:drawable/btn_dialog"
-                android:title="Nothin" />
+                android:title="Reset Questoes" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@android:drawable/btn_dialog"
-                android:title="About" />
+                android:title="Sobre" />
         </menu>
     </item>
 
