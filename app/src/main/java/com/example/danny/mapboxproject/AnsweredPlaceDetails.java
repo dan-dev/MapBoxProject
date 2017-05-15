@@ -45,13 +45,13 @@ public class AnsweredPlaceDetails extends AppCompatActivity {
                 //contact.setVisibility(View.GONE);
             }
             else{
-                contact.setText(jsonObject.getString("contact"));
+                contact.setText("Contacto: " + jsonObject.getString("contact"));
             }
             if(jsonObject.getString("schedule").isEmpty()){
                 //contact.setVisibility(View.GONE);
             }
             else{
-                schedule.setText(jsonObject.getString("schedule"));
+                schedule.setText("Horário: " + jsonObject.getString("schedule"));
             }
 
             JSONArray arrayImages = jsonObject.getJSONArray("images");

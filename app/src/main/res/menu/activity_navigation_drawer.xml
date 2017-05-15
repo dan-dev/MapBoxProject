@@ -4,19 +4,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:icon="@android:drawable/ic_dialog_map"
+            android:icon="@drawable/ic_mapa"
             android:title="Mapa" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@android:drawable/ic_menu_help"
+            android:icon="@drawable/ic_question"
             android:title="Questoes Abertas" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:icon="@drawable/ic_perguntas_certas"
             android:title="Questoes Respondidas" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@android:drawable/btn_star"
+            android:icon="@drawable/ic_places"
             android:title="Sitios" />
     </group>
 
@@ -24,12 +24,16 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@android:drawable/btn_dialog"
+                android:icon="@drawable/ic_reset"
                 android:title="Reset Questoes" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@android:drawable/btn_dialog"
+                android:icon="@drawable/ic_about"
                 android:title="Sobre" />
+            <item
+                android:id="@+id/nav_out"
+                android:icon="@drawable/ic_logout"
+                android:title="LogOut" />
         </menu>
     </item>
 

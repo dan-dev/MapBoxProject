@@ -1,9 +1,12 @@
 package com.example.danny.mapboxproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -61,6 +64,11 @@ public class NavigationActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        MainPageActivity activity = new MainPageActivity();
+        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_layout, activity).addToBackStack(null).commit();
     }
 
     private void fillDatabase(){
@@ -69,22 +77,18 @@ public class NavigationActivity extends AppCompatActivity
         try {
             InputStream inputStream = getAssets().open("questionsJson.json");
             int size = inputStream.available();
-
             byte[] buffer = new byte[size];
 
             inputStream.read(buffer);
-
             inputStream.close();
 
             json = new String(buffer, "UTF-8");
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
             JSONArray jsonArray = new JSONArray(json);
-            //Log.e("-------------array: ", ""+arrayPlaces.length());
             for(int i = 0; i < jsonArray.length(); i++){
                 Question question = new Question();
                 question.setId(jsonArray.getJSONObject(i).getInt("id"));
@@ -134,7 +138,6 @@ public class NavigationActivity extends AppCompatActivity
             new Intent(NavigationActivity.this, MainActivity.class);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -168,7 +171,26 @@ public class NavigationActivity extends AppCompatActivity
             dbm.dropTble(dbm.getWritableDatabase());
             fillDatabase();
         } else if (id == R.id.nav_send) {
-
+            AboutActivity activity = new AboutActivity();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_layout, activity).addToBackStack(null).commit();
+        } else if(id == R.id.nav_out) {
+            new AlertDialog.Builder(this).setTitle("Log out").setMessage("Deseja sair da conta?")
+                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

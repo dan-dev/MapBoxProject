@@ -8,7 +8,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -37,7 +36,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements PermissionsListener {
@@ -89,28 +87,6 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
             e.printStackTrace();
         }
 
-        final Button questionsBTN = (Button) findViewById(R.id.questionBtn);
-
-        final FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButtonMain);
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(context, QuestionListActivity.class);
-                //startActivity(intent);
-            }
-        });
-        floatingActionButton.setVisibility(View.GONE);
-
-        questionsBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(context, QuestionListActivity.class);
-                //startActivity(intent);
-            }
-        });
-        questionsBTN.setVisibility(View.GONE);
-
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
@@ -134,17 +110,6 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
 
                 enableLocationTracking();
 
-                List<LatLng> coordsList = new ArrayList<LatLng>();
-                //final Place place = new Place();
-                //final List<Place> placeList = place.getPlacesList();
-
-                //int i = 0;
-                /*for (Place p : placeList) {
-                    LatLng latLng = p.getCoord();
-                    mapboxMap.addMarker(new MarkerOptions().position(new LatLng(latLng)).title(p.getName())).setId(i);
-                    i++;
-                }*/
-
                 for(int i = 0; i < arrayPlaces.length(); i++){
                     try {
                         Icon icon = null;
@@ -167,9 +132,6 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
                 mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
                     @Override
                     public View getInfoWindow(@NonNull Marker marker) {
-
-                        //Log.e("---------", Double.toString(distance));
-                        //Toast.makeText(getApplicationContext(), "clicked", Toast.LENGTH_SHORT).show();
                         View v = getLayoutInflater().inflate(R.layout.layout_info_window, null);
                         TextView textView = (TextView) v.findViewById(R.id.text);
                         TextView textView2 = (TextView) v.findViewById(R.id.textView);
@@ -186,9 +148,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
                             placeJson = arrayPlaces.getJSONObject(id).toString();
 
                             Double distance = -1.0;
-                            if(map.getMyLocation() == null){
-                                Log.e("------------------", "null");
-                            }
+                            if(map.getMyLocation() == null){ }
                             else{
                                 distance = marker.getPosition().distanceTo(new LatLng(map.getMyLocation().getLatitude(), map.getMyLocation().getLongitude()));
                                 if(distance > 1000){
@@ -200,25 +160,17 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
                                 }
                             }
 
-                            //Resources resources = context.getResources();
-                            //final int res = resources.getIdentifier(placeList.get(id).getImage(), "drawable", context.getPackageName());
-                            //imageView.setImageResource(res);
-
                             Resources resources = context.getResources();
                             final int resourceId = resources.getIdentifier(arrayPlaces.getJSONObject(id).getJSONArray("images").getJSONObject(0).getString("ref"), "drawable",
                                     context.getPackageName());
 
                             imageView.setImageResource(resourceId);
 
-                            /*if(marker.getPosition().distanceTo(new LatLng(map.getMyLocation().getLatitude(), map.getMyLocation().getLongitude())) > 10){
-                            }*/
-
                             final Double finalDistance = distance;
                             final String finalPlaceJson = placeJson;
                             button.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    //Toast.makeText(getApplicationContext(), finalDistance +"", Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(getBaseContext(), PlaceDetails.class);
                                     if(finalDistance > 5 || finalDistance<0){
@@ -297,22 +249,21 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
     }
 
     private void enableGPS(){
-        new AlertDialog.Builder(context).setTitle("Enable GPS").setMessage("Please enable GPS")
-                .setPositiveButton("Enable", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(context).setTitle("Ligue GPS").setMessage("É necessario ligar o GPS")
+                .setPositiveButton("Ligar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                         context.startActivity(intent);
                     }
                 })
-                .setNegativeButton("Nah", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
                 })
                 .show();
-
     }
 
     private void enableLocationTracking() {

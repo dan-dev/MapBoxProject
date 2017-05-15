@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -43,18 +44,18 @@ public class PlaceDetails extends AppCompatActivity {
             name.setText(jsonObject.getString("name"));
             if (close == 1){
                 details.setText(jsonObject.getString("description"));
-
+                seeMore.setVisibility(View.INVISIBLE);
             }
             else{
                 details.setText(jsonObject.getString("resume"));
             }
             if(jsonObject.getString("contact").isEmpty()){ }
             else{
-                contact.setText(jsonObject.getString("contact"));
+                contact.setText("Contacto: " + jsonObject.getString("contact"));
             }
             if(jsonObject.getString("schedule").isEmpty()){ }
             else{
-                schedule.setText(jsonObject.getString("schedule"));
+                schedule.setText("Horário: " + jsonObject.getString("schedule"));
             }
 
             JSONArray arrayImages = jsonObject.getJSONArray("images");
@@ -66,6 +67,9 @@ public class PlaceDetails extends AppCompatActivity {
                         context.getPackageName());
                 textSliderView.image(resourceId).setScaleType(BaseSliderView.ScaleType.CenterInside);
                 sliderLayout.addSlider(textSliderView);
+                if(close != 1){
+                    break;
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();

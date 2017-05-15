@@ -301,15 +301,15 @@
       "type":1,
       "images":[
         {
-          "ref":"museu_de_arte_contemporânea_de_serralves_1",
+          "ref":"museu_de_arte_contemporanea_de_serralves_1",
           "number":0
         },
         {
-          "ref":"museu_de_arte_contemporânea_de_serralves_2",
+          "ref":"museu_de_arte_contemporanea_de_serralves_2",
           "number":1
         },
         {
-          "ref":"museu_de_arte_contemporânea_de_serralves_3",
+          "ref":"museu_de_arte_contemporanea_de_serralves_3",
           "number":2
         }
       ]

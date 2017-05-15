@@ -200,8 +200,4 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         return list;
     }
-
-
-
-
 }

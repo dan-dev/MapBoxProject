@@ -4,15 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.danny.mapboxproject.PlaceList">
-
-    <ListView
-        android:id="@+id/placelistView"
-        android:divider="@drawable/list_div"
-        android:dividerHeight="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </ListView>
+    android:background="@drawable/mainpagehdpi"
+    tools:context="com.example.danny.mapboxproject.MainPageActivity">
 
 </android.support.constraint.ConstraintLayout>

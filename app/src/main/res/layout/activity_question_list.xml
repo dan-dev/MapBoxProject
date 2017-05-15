@@ -6,20 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.danny.mapboxproject.QuestionListActivity">
 
-    <Button
-        android:id="@+id/mapBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:text="M"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
     <ListView
         android:id="@+id/questionListView"
+        android:divider="@drawable/list_div"
+        android:dividerHeight="2dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -32,18 +22,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        android:clickable="true"
-        app:backgroundTint="@android:color/darker_gray"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/mapbox_compass_icon" />
 
 </android.support.constraint.ConstraintLayout>
