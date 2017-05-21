@@ -2,10 +2,15 @@ package com.example.danny.mapboxproject;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +28,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -149,6 +156,10 @@ public class NavigationActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             startActivity(new Intent(NavigationActivity.this, MainActivity.class));
+            /*MapFragment activity = new MapFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_layout, activity).addToBackStack(null).commit();*/
         } else if (id == R.id.nav_gallery) {
             QuestionListActivity activity = new QuestionListActivity();
             android.support.v4.app.FragmentTransaction fragmentTransaction =
@@ -170,6 +181,7 @@ public class NavigationActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
             dbm.dropTble(dbm.getWritableDatabase());
             fillDatabase();
+
         } else if (id == R.id.nav_send) {
             AboutActivity activity = new AboutActivity();
             android.support.v4.app.FragmentTransaction fragmentTransaction =

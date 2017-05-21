@@ -56,6 +56,13 @@
         android:text="Sem conta? Cria uma"
         android:textColor="@android:color/background_light" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_below="@id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/line_login" />
+
     <ImageButton
         android:id="@+id/button3"
         android:layout_width="wrap_content"
@@ -63,8 +70,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="24dp"
         android:background="@drawable/facebook"
-        android:layout_below="@+id/button2" />
+        android:layout_below="@+id/imageView2" />
 
 </RelativeLayout>

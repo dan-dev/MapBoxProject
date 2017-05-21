@@ -1,5 +1,6 @@
 package com.example.danny.mapboxproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,12 +10,13 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,37 +42,43 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PermissionsListener {
+
+public class MapFragment extends Fragment implements PermissionsListener {
 
     private PermissionsManager permissionsManager;
     private MapView mapView;
     private MapboxMap map;
-    Context context = this;
+    Context context = getContext();
     JSONArray arrayPlaces;
     JSONArray arrayTypes;
+    View view;
+
+    public MapFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Mapbox.getInstance(this, "pk.eyJ1IjoiZGFuLWRldiIsImEiOiJjajBwdHM1NTUwMGZ6Mndtd3BxaXpyb3FtIn0.z_ap6R88cPHTzu5RvMlvlQ");
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_map, container, false);
 
-        setContentView(R.layout.activity_main);
 
-        IconFactory iconFactory = IconFactory.getInstance(MainActivity.this);
+
+        Mapbox.getInstance(getActivity(), "pk.eyJ1IjoiZGFuLWRldiIsImEiOiJjajBwdHM1NTUwMGZ6Mndtd3BxaXpyb3FtIn0.z_ap6R88cPHTzu5RvMlvlQ");
+
+
+
+        //setContentView(R.layout.activity_main);
+
+        IconFactory iconFactory = IconFactory.getInstance(context);
 
         final Icon statue = iconFactory.fromResource(R.drawable.ic_estatua);
         final Icon museum = iconFactory.fromResource(R.drawable.ic_museu);
         final Icon church = iconFactory.fromResource(R.drawable.ic_igreja);
 
-        ImageButton goMain = (ImageButton) findViewById(R.id.goMain);
-        goMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, NavigationActivity.class));
-            }
-        });
-
-        FloatingActionButton centerFAB = (FloatingActionButton) findViewById(R.id.centerFAB);
+        FloatingActionButton centerFAB = (FloatingActionButton) view.findViewById(R.id.centerFAB);
         centerFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
         String json = "";
 
         try {
-            InputStream inputStream = getAssets().open("placeJson.json");
+            InputStream inputStream = context.getAssets().open("placeJson.json");
             int size = inputStream.available();
 
             byte[] buffer = new byte[size];
@@ -108,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
             e.printStackTrace();
         }
 
-        mapView = (MapView) findViewById(R.id.mapView);
+        mapView = (MapView) view.findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -116,10 +124,10 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
 
                 map = mapboxMap;
 
-                permissionsManager = new PermissionsManager(MainActivity.this);
-                if (!PermissionsManager.areLocationPermissionsGranted(MainActivity.this)) {
+                permissionsManager = new PermissionsManager((PermissionsListener) getContext().getApplicationContext());
+                if (!PermissionsManager.areLocationPermissionsGranted(getContext().getApplicationContext())) {
                     Log.e("-------------", "no permission");
-                    permissionsManager.requestLocationPermissions(MainActivity.this);
+                    permissionsManager.requestLocationPermissions((Activity) getContext().getApplicationContext());
                 } else {
                     Log.e("-------------","permission");
                     //enableLocationTracking();
@@ -153,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
                 mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
                     @Override
                     public View getInfoWindow(@NonNull Marker marker) {
-                        View v = getLayoutInflater().inflate(R.layout.layout_info_window, null);
+                        View v = getActivity().getLayoutInflater().inflate(R.layout.layout_info_window, null);
                         TextView textView = (TextView) v.findViewById(R.id.text);
                         TextView textView2 = (TextView) v.findViewById(R.id.textView);
                         ImageView imageView = (ImageView) v.findViewById(R.id.image);
@@ -193,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
                                 @Override
                                 public void onClick(View v) {
 
-                                    Intent intent = new Intent(getBaseContext(), PlaceDetails.class);
+                                    Intent intent = new Intent(context, PlaceDetails.class);
                                     if(finalDistance > 5 || finalDistance<0){
                                         intent.putExtra("close", 0);
                                     }
@@ -213,6 +221,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
                 });
             }
         });
+        return view;
     }
 
     @Override
@@ -222,13 +231,13 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         mapView.onStart();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         mapView.onStop();
     }
@@ -246,13 +255,13 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
     }
@@ -308,7 +317,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
 
     @Override
     public void onExplanationNeeded(List<String> permissionsToExplain) {
-        Toast.makeText(this, "This app needs location permissions in order to show its functionality.",
+        Toast.makeText(context, "This app needs location permissions in order to show its functionality.",
                 Toast.LENGTH_LONG).show();
     }
 
@@ -317,9 +326,10 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
         if (granted) {
             enableLocationTracking();
         } else {
-            Toast.makeText(this, "You didn't grant location permissions.",
+            Toast.makeText(context, "You didn't grant location permissions.",
                     Toast.LENGTH_LONG).show();
-            finish();
+            //finish();
         }
     }
+
 }
